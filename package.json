@@ -5,7 +5,9 @@
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "bundle": "browserify -s main app/main.js > dist/bundle.js",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
   },
   "licenses": [
     {
@@ -33,8 +35,10 @@
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
+    "browserify": "^13.1.1",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.3",
+    "uglifyjs": "^2.4.10"
   }
 }
