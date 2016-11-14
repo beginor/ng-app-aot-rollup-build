@@ -7,7 +7,13 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "bundle": "browserify -s main app/main.js > dist/bundle.js",
-    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
+    "prod": "tsc && npm run bundle && npm run minify",
+    "ngc": "ngc",
+    "rollup": "rollup -f iife -c rollup.config.js -o dist/bundle-aot-es2015.js",
+    "es5": "tsc --target es5 --allowJs dist/bundle-aot-es2015.js -out dist/bundle-aot.js",
+    "minify-aot": "uglifyjs dist/bundle-aot.js --screw-ie8 --compress --mangle --output dist/bundle-aot.min.js",
+    "prod-aot": "npm run ngc -- -p tsconfig-es2015.json && npm run tsc -- -p tsconfig-es2015.json && rollup && npm run es5 && npm run minify-aot"
   },
   "licenses": [
     {
@@ -33,11 +39,16 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^2.1.2",
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "browserify": "^13.1.1",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
+    "rollup": "^0.36.3",
+    "rollup-plugin-alias": "^1.2.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rxjs-es": "^5.0.0-beta.12",
     "typescript": "^2.0.3",
     "uglifyjs": "^2.4.10"
   }

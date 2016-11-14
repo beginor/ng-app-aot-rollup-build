@@ -2,3 +2,5 @@ node_modules
 dist
 app/**/*.js
 app/**/*.js.map
+app/**/*.metadata.json
+app/**/*.ngfactory.ts
