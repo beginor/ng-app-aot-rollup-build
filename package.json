@@ -13,7 +13,7 @@
     "rollup": "rollup -f iife -c rollup.config.js -o dist/bundle-aot-es2015.js",
     "es5": "tsc --target es5 --allowJs dist/bundle-aot-es2015.js -out dist/bundle-aot.js",
     "minify-aot": "uglifyjs dist/bundle-aot.js --screw-ie8 --compress --mangle --output dist/bundle-aot.min.js",
-    "prod-aot": "npm run ngc -- -p tsconfig-es2015.json && npm run tsc -- -p tsconfig-es2015.json && rollup && npm run es5 && npm run minify-aot"
+    "prod-aot": "npm run ngc -- -p tsconfig-es2015.json && npm run tsc -- -p tsconfig-es2015.json && npm run rollup && npm run es5 && npm run minify-aot"
   },
   "licenses": [
     {
